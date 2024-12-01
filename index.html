@@ -39,6 +39,10 @@ h1 {
     text-align: center;
 }
 
+h1 span {
+    color: #ed1c24;
+}
+
 footer {
     font-size: small;
     position: fixed;
@@ -98,9 +102,9 @@ footer, footer a {
     background: #333;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 0 5px #333,
+    box-shadow: 0 0 0 5px #231f20,
     0 0 0 15px #fff,
-    0 0 0 18px #111;
+    0 0 0 18px #ed1c24;
     transition: transform 5s ease-in-out;
 }
 
@@ -120,38 +124,40 @@ footer, footer a {
 }
 .wheel div::after {
     position: relative;
+    left: 0.5em;
     transform: rotate(45deg);
-    font-size: 2em;
+    text-align: left;
+    font-size: 1.5em;
     font-weight: 700;
     color: black;
-    content: "Yes";
+    content: var(--variant);
 }
 </style>
-<h1>Will my <em>DB</em> train be late?</h1>
+<h1>Will my <span>DB</span> train be late?</h1>
 <br>
 <div class="container">
   <div class="spinBtn">Spin</div>
   <div class="wheel">
-    <div class="number" style="--i:1;--clr:#007FFF"></div>
-    <div class="number" style="--i:2;--clr:#00FFFF"></div>
-    <div class="number" style="--i:3;--clr:#00FF7F"></div>
-    <div class="number" style="--i:4;--clr:#00FF00"></div>
-    <div class="number" style="--i:5;--clr:#7FFF00"></div>
-    <div class="number" style="--i:6;--clr:#FFFF00"></div>
-    <div class="number" style="--i:7;--clr:#FF7F00"></div>
-    <div class="number" style="--i:8;--clr:#FF0000"></div>
+    <div class="number" style="--i:1;--clr:#007FFF;--variant:'Yes';"></div>
+    <div class="number" style="--i:2;--clr:#00FFFF;--variant:'Absolutely!';"></div>
+    <div class="number" style="--i:3;--clr:#00FF7F;--variant:'Yaaaaaahs!';"></div>
+    <div class="number" style="--i:4;--clr:#00FF00;--variant:'For Sure!';"></div>
+    <div class="number" style="--i:5;--clr:#7FFF00;--variant:'Totally!';"></div>
+    <div class="number" style="--i:6;--clr:#FFFF00;--variant:'Why Not?';"></div>
+    <div class="number" style="--i:7;--clr:#FF7F00;--variant:'Of Course';"></div>
+    <div class="number" style="--i:8;--clr:#FF0000;--variant:'Always';"></div>
   </div>
 </div>
 
 <script>
-    let wheel = document.querySelector('.wheel');
-    let spinBtn = document.querySelector('.spinBtn');
+    const container = document.querySelector('.container');
+    const wheel = document.querySelector('.wheel');
     let value = Math.ceil(Math.random() * 3600);
 
-    spinBtn.onclick = function() {
+    container.addEventListener('click', function() {
         wheel.style.transform = "rotate(" + value + "deg)";
         value += Math.ceil(Math.random() * 3600);
-    }
+    })
 </script>
 
 <footer>
